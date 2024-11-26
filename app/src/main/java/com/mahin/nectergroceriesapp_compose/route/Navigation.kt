@@ -1,5 +1,6 @@
 package com.mahin.nectergroceriesapp_compose.route
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -73,8 +74,8 @@ fun HomeScreen(rootNavController: NavController) {
             modifier = Modifier.padding(paddingValues)
         ) {
             composable(BottomNavItem.Shop.route) { ShopScreen(rootNavController, bottomNavController) }
-            composable(BottomNavItem.Explore.route) { ExploreScreen() }
-            composable(BottomNavItem.Cart.route) { CartScreen() }
+            composable(BottomNavItem.Explore.route) { ExploreScreen(Modifier.fillMaxWidth(), bottomNavController) }
+            composable(BottomNavItem.Cart.route) { CartScreen(Modifier.fillMaxWidth(), bottomNavController) }
             composable(BottomNavItem.Favourite.route) { FavouriteScreen() }
             composable(BottomNavItem.Account.route) { ProfileScreen() }
         }
