@@ -1,94 +1,108 @@
 package com.mahin.nectergroceriesapp_compose.component
 
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
+import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.lerp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
+import com.google.accompanist.pager.calculateCurrentOffsetForPage
 import com.google.accompanist.pager.rememberPagerState
 import com.mahin.nectergroceriesapp_compose.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.yield
+import kotlin.math.absoluteValue
 
-@ExperimentalPagerApi
+@OptIn(ExperimentalPagerApi::class)
 @Composable
-fun CustomViewPagerSlider(){
-
-    val pagerState  = rememberPagerState(
-        pageCount = sliderDataList.size,
-        initialPage =  0,
-        infiniteLoop = true
+fun CustomViewPagerSlider(
+    modifier: Modifier = Modifier
+) {
+    val pagerState = rememberPagerState(initialPage = 0)
+    val imageSlider = listOf(
+        painterResource(id = R.drawable.banner_image_1),
+        painterResource(id = R.drawable.banner_image_2),
+        painterResource(id = R.drawable.banner_image_3)
     )
 
-    LaunchedEffect(Unit){
-        while (true){
+    LaunchedEffect(Unit) {
+        while (true) {
             yield()
-            delay(2000)
+            delay(2600)
             pagerState.animateScrollToPage(
-                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
-                animationSpec = tween(600)
+                page = (pagerState.currentPage + 1) % (pagerState.pageCount)
             )
         }
     }
 
-    HorizontalPager(state = pagerState,
-        modifier = Modifier
-            .height(130.dp)
-            .background(Color.Transparent)
-            .clip(RoundedCornerShape(10.dp)),
-        itemSpacing = 1.dp
-    ) { page ->
-        Card(modifier = Modifier
-            .fillMaxWidth(.9f)
-            .background(Color.Transparent)
-            .align(Alignment.Center),
-            shape = RoundedCornerShape(10.dp),
-        ) {
-
-            val newDataList = sliderDataList[page]
-            Box(modifier = Modifier
+    Column {
+        HorizontalPager(
+            count = imageSlider.size,
+            state = pagerState,
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            modifier = modifier
+                .height(114.dp)
                 .fillMaxWidth()
-                .fillMaxHeight()
-                .background(Color.Transparent),
-                contentAlignment = Alignment.Center
+        ) { page ->
+            Card(
+                shape = RoundedCornerShape(12.dp),
+                modifier = Modifier
+                    .graphicsLayer {
+                        val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
+
+                        lerp(
+                            start = 0.85f,
+                            stop = 1f,
+                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                        ).also { scale ->
+                            scaleX = scale
+                            scaleY = scale
+                        }
+
+                        alpha = lerp(
+                            start = 0.5f,
+                            stop = 1f,
+                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                        )
+                    }
             ) {
-                Image(painter = painterResource(
-                    id = newDataList.imgUrl
-                ),
-                    contentDescription = "Image",
+                Image(
+                    painter = imageSlider[page],
+                    contentDescription = ("Image Slider"),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxSize()
                 )
-
-                //Horizontal dot indicator
-                HorizontalPagerIndicator(
-                    pagerState = pagerState,modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(10.dp),
-                    activeColor = colorResource(id = R.color.nectar_primary_color),
-                    spacing = 7.dp,
-                    indicatorWidth = 6.dp
-                )
             }
         }
+
+        HorizontalPagerIndicator(
+            pagerState = pagerState,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp)
+        )
     }
+}
+
+@ExperimentalPagerApi
+@Preview
+@Composable
+fun CustomviewPagerSliderPreview() {
+    CustomViewPagerSlider()
 }

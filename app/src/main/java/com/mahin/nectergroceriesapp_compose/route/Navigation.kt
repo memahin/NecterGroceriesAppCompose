@@ -1,9 +1,6 @@
 package com.mahin.nectergroceriesapp_compose.route
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.mahin.nectergroceriesapp_compose.component.CustomBottomNavigation
 import com.mahin.nectergroceriesapp_compose.screen.CartScreen
 import com.mahin.nectergroceriesapp_compose.screen.ExploreScreen
 import com.mahin.nectergroceriesapp_compose.screen.FavouriteScreen
@@ -60,26 +58,25 @@ fun Navigation() {
     }
 }
 
-
 @Composable
 fun HomeScreen(rootNavController: NavController) {
     val bottomNavController = rememberNavController()
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        Scaffold(
-            bottomBar = { BottomNavigation(navController = bottomNavController) }
-        ) { paddingValues ->
-            NavHost(
-                navController = bottomNavController,
-                startDestination = BottomNavItem.Shop.route,
-                modifier = Modifier.padding(paddingValues)
-            ) {
-                composable(BottomNavItem.Shop.route) { ShopScreen(rootNavController, bottomNavController) }
-                composable(BottomNavItem.Explore.route) { ExploreScreen() }
-                composable(BottomNavItem.Cart.route) { CartScreen() }
-                composable(BottomNavItem.Favourite.route) { FavouriteScreen() }
-                composable(BottomNavItem.Account.route) { ProfileScreen() }
-            }
+    Scaffold(
+        bottomBar = {
+            CustomBottomNavigation(navController = bottomNavController)
+        }
+    ) { paddingValues ->
+        NavHost(
+            navController = bottomNavController,
+            startDestination = BottomNavItem.Shop.route,
+            modifier = Modifier.padding(paddingValues)
+        ) {
+            composable(BottomNavItem.Shop.route) { ShopScreen(rootNavController, bottomNavController) }
+            composable(BottomNavItem.Explore.route) { ExploreScreen() }
+            composable(BottomNavItem.Cart.route) { CartScreen() }
+            composable(BottomNavItem.Favourite.route) { FavouriteScreen() }
+            composable(BottomNavItem.Account.route) { ProfileScreen() }
         }
     }
 }

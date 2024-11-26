@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.mahin.nectergroceriesapp_compose.R
+import com.mahin.nectergroceriesapp_compose.route.Screens
 import kotlinx.coroutines.delay
 
 @Composable

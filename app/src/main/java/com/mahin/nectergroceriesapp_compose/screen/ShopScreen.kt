@@ -25,6 +25,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.mahin.nectergroceriesapp_compose.R
+import com.mahin.nectergroceriesapp_compose.component.CustomProductList
+import com.mahin.nectergroceriesapp_compose.component.CustomRandomColoredItem
+import com.mahin.nectergroceriesapp_compose.component.CustomViewPagerSlider
+import com.mahin.nectergroceriesapp_compose.component.DebouncedSearchBar
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable

@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mahin.nectergroceriesapp_compose.route.Navigation
 import com.mahin.nectergroceriesapp_compose.ui.theme.NecterGroceriesAppComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,15 +20,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NecterGroceriesAppComposeTheme {
+                Navigation()
             }
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NecterGroceriesAppComposeTheme {
     }
 }

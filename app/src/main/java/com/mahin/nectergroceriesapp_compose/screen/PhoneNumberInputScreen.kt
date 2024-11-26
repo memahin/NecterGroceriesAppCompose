@@ -46,6 +46,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.mahin.nectergroceriesapp_compose.R
+import com.mahin.nectergroceriesapp_compose.component.CustomDivider
+import com.mahin.nectergroceriesapp_compose.component.FloatingNextButton
+import com.mahin.nectergroceriesapp_compose.component.TopBg
+import com.mahin.nectergroceriesapp_compose.route.Screens
 
 @Composable
 fun PhoneNumberInputScreen(navController: NavController) {

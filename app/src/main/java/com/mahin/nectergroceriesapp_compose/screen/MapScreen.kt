@@ -28,6 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.mahin.nectergroceriesapp_compose.R
+import com.mahin.nectergroceriesapp_compose.component.BottomBg
+import com.mahin.nectergroceriesapp_compose.component.CustomDropDown
+import com.mahin.nectergroceriesapp_compose.component.TopBg
+import com.mahin.nectergroceriesapp_compose.route.Screens
 
 @Composable
 fun MapScreen(navController: NavController) {
