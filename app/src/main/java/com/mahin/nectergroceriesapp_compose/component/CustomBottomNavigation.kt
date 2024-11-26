@@ -24,7 +24,7 @@ import com.mahin.nectergroceriesapp_compose.route.BottomNavItem
 @Composable
 fun CustomBottomNavigation(navController: NavController) {
     val items = listOf(
-        BottomNavItem.Shop,
+        BottomNavItem.Home,
         BottomNavItem.Explore,
         BottomNavItem.Cart,
         BottomNavItem.Favourite,

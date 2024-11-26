@@ -70,10 +70,10 @@ fun HomeScreen(rootNavController: NavController) {
     ) { paddingValues ->
         NavHost(
             navController = bottomNavController,
-            startDestination = BottomNavItem.Shop.route,
+            startDestination = BottomNavItem.Home.route,
             modifier = Modifier.padding(paddingValues)
         ) {
-            composable(BottomNavItem.Shop.route) { ShopScreen(rootNavController, bottomNavController) }
+            composable(BottomNavItem.Home.route) { ShopScreen(rootNavController, bottomNavController) }
             composable(BottomNavItem.Explore.route) { ExploreScreen(Modifier.fillMaxWidth(), bottomNavController) }
             composable(BottomNavItem.Cart.route) { CartScreen(Modifier.fillMaxWidth(), bottomNavController) }
             composable(BottomNavItem.Favourite.route) { FavouriteScreen() }

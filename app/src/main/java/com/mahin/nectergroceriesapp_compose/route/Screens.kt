@@ -19,7 +19,7 @@ sealed class BottomNavItem(
     val title: String,
     val icon: Int,
 ) {
-    object Shop : BottomNavItem("shop", "Shop", R.drawable.ic_shop)
+    object Home : BottomNavItem("shop", "Shop", R.drawable.ic_shop)
     object Explore : BottomNavItem("explore", "Explore", R.drawable.ic_explore)
     object Cart : BottomNavItem("cart", "Cart", R.drawable.ic_cart)
     object Favourite : BottomNavItem("favourite", "Favourite", R.drawable.ic_favourite)
