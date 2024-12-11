@@ -139,7 +139,7 @@ fun ShopScreen(rootNavController: NavController, bottomNavController: NavHostCon
                 )
             }
 
-//       Groceries Random Background Colored Row
+//         Groceries Random Background Colored Row
             CustomRandomColoredItem(shopNavController)
             CustomProductList(shopNavController)
         }
