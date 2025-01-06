@@ -1,5 +1,6 @@
 package com.mahin.nectergroceriesapp_compose.screen
 
+import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -30,9 +31,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.mahin.nectergroceriesapp_compose.R
 import com.mahin.nectergroceriesapp_compose.component.CustomButton
 import com.mahin.nectergroceriesapp_compose.component.CustomDivider
@@ -161,7 +164,7 @@ fun LogInScreen(navController: NavController) {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
-                                !android.util.Patterns.EMAIL_ADDRESS.matcher(userEmailText.text).matches() -> {
+                                !Patterns.EMAIL_ADDRESS.matcher(userEmailText.text).matches() -> {
                                     Toast.makeText(context, "Email is invalid.", Toast.LENGTH_SHORT).show()
                                 }
                                 userPasswordText.text.length < 8 -> {
@@ -199,4 +202,12 @@ fun LogInScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(200.dp))
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun LoginScreenPreview() {
+    LogInScreen(
+        navController = rememberNavController()
+    )
 }

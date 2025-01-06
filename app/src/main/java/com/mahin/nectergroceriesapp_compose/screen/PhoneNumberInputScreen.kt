@@ -42,9 +42,11 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.mahin.nectergroceriesapp_compose.R
 import com.mahin.nectergroceriesapp_compose.component.CustomDivider
 import com.mahin.nectergroceriesapp_compose.component.FloatingNextButton
@@ -177,4 +179,12 @@ fun PhoneNumberInputScreen(navController: NavController) {
             )
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PhoneNumberInputScreenPreview() {
+    PhoneNumberInputScreen(
+        navController = rememberNavController()
+    )
 }
