@@ -22,9 +22,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.mahin.nectergroceriesapp_compose.R
 import com.mahin.nectergroceriesapp_compose.route.Screens
 
@@ -94,4 +96,12 @@ fun OnboardingScreen(navController: NavController) {
             }
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun OnboardingScreenPreview() {
+    OnboardingScreen(
+        navController = rememberNavController()
+    )
 }

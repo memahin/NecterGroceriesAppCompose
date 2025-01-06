@@ -14,8 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.mahin.nectergroceriesapp_compose.R
 import com.mahin.nectergroceriesapp_compose.route.Screens
 import kotlinx.coroutines.delay
@@ -46,4 +48,12 @@ fun SplashScreen(navController: NavController) {
             )
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun SplashScreenPreview() {
+    SplashScreen(
+        navController = rememberNavController()
+    )
 }
